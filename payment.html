@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payment | E-Shop</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>E-Shop</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h2>Complete Your Order</h2>
+
+    <section id="order-summary">
+      <h3>Order Summary</h3>
+      <ul id="item-list"></ul>
+      <p class="total-amount">Total: ₹<span id="total">0</span></p>
+    </section>
+
+    <button id="pay-button" onclick="confirmOrder()" aria-label="Pay Now">Pay Now</button>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 E-Shop. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const itemList = document.getElementById("item-list");
+    const totalElement = document.getElementById("total");
+    const payButton = document.getElementById("pay-button");
+
+    let total = 0;
+
+    if (cart.length === 0) {
+      itemList.innerHTML = "<li>Your cart is empty.</li>";
+      payButton.disabled = true;
+      payButton.innerText = "Cart Empty";
+    } else {
+      cart.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = `${item.name} - ₹${item.price} x ${item.quantity || 1}`;
+        itemList.appendChild(li);
+        total += item.price * (item.quantity || 1);
+      });
+
+      totalElement.innerText = total.toFixed(2);
+    }
+
+    function confirmOrder() {
+      payButton.innerText = "Processing...";
+      payButton.disabled = true;
+
+      setTimeout(() => {
+        localStorage.removeItem("cart");
+        window.location.href = "confirm.html";
+      }, 2000);
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Order Confirmation - ShopEase</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Thank You for Your Order! 🎉</h1>
+    <nav>
+      <a href="index.html">Shop Again</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="confirmation">
+    <h2>Your order has been placed successfully!</h2>
+    <p>We appreciate your business and hope to see you again soon. 🛍️</p>
+
+    <!-- Dynamically display order details here -->
+    <div id="orderDetails"></div>
+    
+    <button onclick="window.location.href='index.html'">Shop Again</button>
+  </section>
+
+  <script>
+    window.onload = function() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const orderDetailsDiv = document.getElementById('orderDetails');
+
+      if (cart.length > 0) {
+        // Display items in the cart
+        const orderDetails = cart.map(item => `
+          <p>${item.name} - $${item.price} x ${item.quantity}</p>
+        `).join('');
+
+        // Calculate total price
+        const total = cart.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
+
+        // Add order details to the page
+        orderDetailsDiv.innerHTML = `
+          <h3>Your Order Details:</h3>
+          ${orderDetails}
+          <p><strong>Total: $${total}</strong></p>
+        `;
+      } else {
+        orderDetailsDiv.innerHTML = `<p>No items in cart.</p>`;
+      }
+    };
+  </script>
+</body>
+</html>

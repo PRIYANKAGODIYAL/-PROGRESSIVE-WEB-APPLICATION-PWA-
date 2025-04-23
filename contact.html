@@ -1,0 +1,93 @@
+<!-- contact.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact - ShopEase</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Contact Us ✉️</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <section class="contact">
+    <h2>We'd love to hear from you!</h2>
+    <form onsubmit="handleContact(event)">
+      <label>Name:
+        <input type="text" required />
+      </label>
+      <label>Email:<!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+          <title>Contact - ShopEase</title>
+          <link rel="stylesheet" href="style.css" />
+        </head>
+        <body>
+        
+          <header>
+            <h1>Contact Us ✉️</h1>
+            <nav>
+              <a href="index.html">Home</a>
+              <a href="about.html">About</a>
+            </nav>
+          </header>
+        
+          <main>
+            <section class="contact">
+              <h2>We'd love to hear from you!</h2>
+              <form onsubmit="handleContact(event)" class="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required placeholder="Your name" />
+        
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required placeholder="your@email.com" />
+        
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required placeholder="Your message..."></textarea>
+        
+                <button type="submit">Send Message</button>
+              </form>
+            </section>
+          </main>
+        
+          <footer>
+            <p>&copy; 2025 ShopEase. All rights reserved.</p>
+          </footer>
+        
+          <script>
+            function handleContact(e) {
+              e.preventDefault();
+              alert("📬 Thanks for reaching out! We'll get back to you soon.");
+              e.target.reset(); // Clear the form
+            }
+          </script>
+        
+        </body>
+        </html>
+        
+        <input type="email" required />
+      </label>
+      <label>Message:
+        <textarea required></textarea>
+      </label>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <script>
+    function handleContact(e) {
+      e.preventDefault();
+      alert("📬 Thanks for reaching out! We'll get back to you soon.");
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
